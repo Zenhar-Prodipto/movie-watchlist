@@ -159,3 +159,7 @@ I used a Gitflow-inspired workflow to keep development organized:
 ### Commits
 
 - Semantic messages (e.g., `feat: Add eye icon toggle`, `fix: Correct Inter font`) for clarity.
+
+## 🎥 Demo
+
+Watch a demonstration of the Movie Watchlist App features [here](https://drive.google.com/drive/folders/1s6ph8JR2XvbT8bShv05HgAp8MAWU31hR).
