@@ -4,10 +4,7 @@ import Navbar from "./components/Navbar";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-
-const SearchPage: React.FC = () => (
-  <div className="p-4 text-center">Search Page (Placeholder)</div>
-);
+import SearchPage from "./pages/SearchPage";
 
 const WatchlistPage: React.FC = () => (
   <div className="p-4 text-center">Watchlist Page (Placeholder)</div>
