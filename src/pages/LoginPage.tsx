@@ -16,7 +16,6 @@ const LoginPage: React.FC = () => {
       const user = JSON.parse(storedUser);
       if (user.email === email && user.password === password) {
         auth?.login();
-        navigate("/search");
         return;
       }
     }

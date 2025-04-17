@@ -18,9 +18,9 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <WatchlistProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <WatchlistProvider>
           <div className="min-h-screen bg-gray-100">
             <Navbar />
             <main className="container mx-auto">
@@ -41,9 +41,9 @@ const App: React.FC = () => {
               </Routes>
             </main>
           </div>
-        </BrowserRouter>
-      </WatchlistProvider>
-    </AuthProvider>
+        </WatchlistProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 };
 

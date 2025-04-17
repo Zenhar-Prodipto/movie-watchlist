@@ -9,13 +9,11 @@ const SignUpPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Check if user exists
     const storedUser = localStorage.getItem("user");
     if (storedUser && JSON.parse(storedUser).email === email) {
       setError("Email already exists");
       return;
     }
-    // Store new user
     localStorage.setItem("user", JSON.stringify({ email, password }));
     navigate("/login");
   };
