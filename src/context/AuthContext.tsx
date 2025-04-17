@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -15,7 +16,8 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -25,11 +27,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = () => {
     setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true");
+    navigate("/search");
   };
 
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
+    navigate("/search");
   };
 
   return (
