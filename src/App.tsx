@@ -2,16 +2,12 @@ import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
+import { WatchlistProvider } from "./context/WatchlistContext";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-
-const SearchPage: React.FC = () => (
-  <div className="p-4 text-center">Search Page (Placeholder)</div>
-);
-
-const WatchlistPage: React.FC = () => (
-  <div className="p-4 text-center">Watchlist Page (Placeholder)</div>
-);
+import SearchPage from "./pages/SearchPage";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
+import WatchlistPage from "./pages/WatchlistPage";
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -23,27 +19,30 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <div className="min-h-screen bg-gray-100">
-          <Navbar />
-          <main className="container mx-auto">
-            <Routes>
-              <Route path="/search" element={<SearchPage />} />
-              <Route
-                path="/watchlist"
-                element={
-                  <ProtectedRoute>
-                    <WatchlistPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/" element={<SearchPage />} />
-            </Routes>
-          </main>
-        </div>
-      </BrowserRouter>
+      <WatchlistProvider>
+        <BrowserRouter>
+          <div className="min-h-screen bg-gray-100">
+            <Navbar />
+            <main className="container mx-auto">
+              <Routes>
+                <Route path="/search" element={<SearchPage />} />
+                <Route
+                  path="/watchlist"
+                  element={
+                    <ProtectedRoute>
+                      <WatchlistPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/movie/:id" element={<MovieDetailsPage />} />
+                <Route path="/" element={<SearchPage />} />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
+      </WatchlistProvider>
     </AuthProvider>
   );
 };
